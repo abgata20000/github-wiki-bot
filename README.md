@@ -27,14 +27,14 @@
 
 ## github の設定
 ### Webhook を登録する
-Settings -> Webhooks -> Add webhook
+- Settings -> Webhooks -> Add webhook
 
 ### 各項目を入力
-Payload URL -> https://my-app-name.herokuapp.com/github/wiki
-Content type -> `application/json`
-Secret -> herokuで設定した `HUBOT_GITHUB_SECRET` と同じものを指定
-Which events would you like to trigger this webhook? ->
+- Payload URL -> https://my-app-name.herokuapp.com/github/wiki
+- Content type -> `application/json`
+- Secret -> herokuで設定した `HUBOT_GITHUB_SECRET` と同じものを指定
+- Which events would you like to trigger this webhook? ->
 `Let me select individual events.` を選択して `Gollum` にチェックを入れる(Pushは外してOK)
-Active -> checked
+- Active -> checked
 
 ### Add webhook をクリックして登録完了
