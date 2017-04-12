@@ -20,16 +20,22 @@ module.exports = (robot) ->
     res.status(200).send 'ok'
 
   atWiki = (body) ->
+    title = null
     switch body.pages[0].action
+      when 'created'
+        title = "***** GitHub Wiki Created ******"
       when 'edited'
-        messages = []
-        messages.push "***** GitHub Wiki Updated ******"
-        messages.push "Title: " + body.pages[0].page_name
-        messages.push "Sender: " + body.sender.login
-        messages.push "Page: " + body.pages[0].html_url
-        messages.push "Difference: " + differenceUrl(body)
-        message = messages.join("\n")
-        return message
+        title = "***** GitHub Wiki Updated ******"
+
+    if title
+      messages = []
+      messages.push title
+      messages.push "Title: " + body.pages[0].page_name
+      messages.push "Sender: " + body.sender.login
+      messages.push "Page: " + body.pages[0].html_url
+      messages.push "Difference: " + differenceUrl(body)
+      message = messages.join("\n")
+      return message
 
   differenceUrl = (body) ->
     body.pages[0].html_url + '/_compare/' + body.pages[0].sha
